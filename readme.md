@@ -2,7 +2,7 @@
 
  polyfills.ts
 ```typescript
-import {CryptoProPlugin} from "./app/plugins/cryptopro";
+import {CryptoProPlugin} from "./cryptopro.ts";
 window["CryptoProPlugin"] = CryptoProPlugin;
 ```
 
