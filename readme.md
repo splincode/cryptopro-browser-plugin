@@ -1,8 +1,7 @@
 
 How use:
 
-```
-
+```typescript
 // polyfills.ts
 import {CryptoProPlugin} from "./app/plugins/cryptopro";
 window["CryptoProPlugin"] = CryptoProPlugin;
