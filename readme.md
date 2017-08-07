@@ -1,5 +1,5 @@
 
-How use:
+**How use:
 
  polyfills.ts
 ```typescript
