@@ -1,13 +1,14 @@
 
 How use:
 
+ polyfills.ts
 ```typescript
-// polyfills.ts
 import {CryptoProPlugin} from "./app/plugins/cryptopro";
 window["CryptoProPlugin"] = CryptoProPlugin;
+```
 
-// app.component.ts
-
+app.component.ts
+```typescript
 interface CertList {
     value: string;
     text: string;
