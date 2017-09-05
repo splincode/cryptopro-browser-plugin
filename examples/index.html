@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>КриптоПро ЭЦП Browser plug-in</title>
+
+    <script src="js/cadesplugin-api.js"></script>
+    <script>
+        const CADESCOM_CADES_X_LONG_TYPE_1 = 0x5d;
+        const CAPICOM_CURRENT_USER_STORE = 2;
+        const CAPICOM_MY_STORE = "My";
+        const CAPICOM_STORE_OPEN_MAXIMUM_ALLOWED = 2;
+        const CAPICOM_CERTIFICATE_FIND_SUBJECT_NAME = 1;
+    </script>
+    <script src="js/async-crypto.es6.js"></script>
+
+</head>
+<body>
+
+<p><b>Список сертификатов:</b></p>
+<div id="myList">
+    <p id="loading">Идет загрузка ЭЦП Browser plug-in...</p>
+</div>
+
+<div id="myError"></div>
+
+<script>
+
+    let loading = document.getElementById("loading");
+
+    // ожидание загрузки плагина
+    window["cadesplugin"].then(() => {
+
+        document.getElementById("myList").removeChild(loading);
+        let loadingCertList = document.createTextNode("Идет загрузка сертификатов...");
+        document.getElementById("myList").appendChild(loadingCertList);
+
+        // ожидание загрузки сертификатов
+        window["FillCertList_NPAPI"]().then(
+            (certList) => {
+
+                console.log(JSON.stringify(certList, null, 4));
+                document.getElementById("myList").removeChild(loadingCertList);
+
+                certList.forEach((cert) => {
+                    let text = document.createTextNode(cert.text);
+                    document.getElementById("myList").appendChild(text);
+                });
+            },
+            (error) => {
+
+                document.getElementById("myList").removeChild(loadingCertList);
+                let myError = document.createTextNode("Обнаружены ошибки, смотри в логах");
+                document.getElementById("myError").appendChild(myError);
+
+
+                console.error(error);
+            }
+        ).catch(function (e) {
+            console.error(e);
+            let myError = document.createTextNode("Обнаружены ошибки, смотри в логах");
+            document.getElementById("myError").appendChild(myError);
+        });
+
+    }, (error) => {
+
+        console.error(error);
+        document.getElementById("myList").removeChild(loading);
+        let myError = document.createTextNode("Обнаружены ошибки, смотри в логах");
+        document.getElementById("myError").appendChild(myError);
+
+    });
+
+
+</script>
+
+</body>
+</html>
