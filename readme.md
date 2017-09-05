@@ -4,7 +4,7 @@
  на веб-страницах с использованием СКЗИ "КриптоПро CSP".
  
  ____________
- ![alt](https://www.cryptopro.ru/sites/default/files/images/browser_plug-in_.png)
+<img src="https://www.cryptopro.ru/sites/default/files/images/browser_plug-in_.png" align="center">
  ____________
  
  КриптоПро ЭЦП Browser plug-in позволяет подписывать различные типы данных:
@@ -86,7 +86,7 @@ PrivateKey Link     : No
 
 ![](https://habrastorage.org/web/8db/534/a43/8db534a43de04e6e951c43b7fafd2e34.png)
 
-6. Проверям количество установленных сертификатов 
+6. Проверяем количество установленных сертификатов 
 ```bash
 $ /opt/cprocsp/bin/amd64/certmgr -list # у меня всего 2 сертификата
 Certmgr 1.0 (c) "CryptoPro",  2007-2010.
